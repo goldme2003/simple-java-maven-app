@@ -1,5 +1,10 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'maven:3-alpine'
+            args '-v /root/.m2:/home/zen/.m2/mavenlocalRepos'
+        }
+    }
     stages {
         stage('Build') {
             steps {
